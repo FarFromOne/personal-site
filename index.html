@@ -1,48 +1,79 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <title>zhttp 的个人中枢站</title>
-  <style>
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 16px;
-      line-height: 1.6;
-    }
-    h1, h2 {
-      margin-bottom: 0.5em;
-    }
-    .section {
-      margin-bottom: 32px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid #ddd;
-    }
-    ul {
-      padding-left: 20px;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <title>我的个人中枢站</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>zhttp的个人中枢站</h1>
-  <p>这里是我自己常看的内容和写的笔记的集合。</p>
+  <!-- 顶部导航 -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div>
+        <h1 class="title">我的个人中枢站</h1>
+        <p class="subtitle">把我常看的网站和自己的思考集中放在一个地方。</p>
+      </div>
+      <nav class="nav">
+        <a href="#sites">常逛网站</a>
+        <a href="#notes">我的笔记</a>
+      </nav>
+    </div>
+  </header>
 
-  <div class="section">
-    <h2>🧭 我常逛的网站</h2>
-    <ul>
-      <li><a href="https://example.com" target="_blank">示例网站 1</a> - 简短说明一下这个网站是干嘛的</li>
-      <li><a href="https://example.org" target="_blank">示例网站 2</a></li>
-      <!-- 以后你可以在这里不断加自己常逛的网站 -->
-    </ul>
-  </div>
+  <main class="container">
+    <!-- 功能 1：常逛网站（现在变成卡片 + 说明 + 类型） -->
+    <section id="sites" class="section">
+      <div class="section-header">
+        <h2>🧭 我常逛的网站</h2>
+        <p class="section-desc">目前仅为测试阶段，后续添加实际内容</p>
+      </div>
 
-  <div class="section">
-    <h2>📒 我的笔记</h2>
-    <ul>
-      <li><a href="notes/note-1.html">示例笔记：我的第一个想法</a></li>
-      <!-- 以后会在 notes 目录下放更多笔记 -->
-    </ul>
-  </div>
+      <div class="card-list">
+        <article class="card">
+          <h3>
+            <a href="https://example.com" target="_blank" rel="noreferrer">网站 1</a>
+          </h3>
+          <p class="card-meta">类型：博客 / 技术</p>
+          <p>test1</p>
+        </article>
+
+        <article class="card">
+          <h3>
+            <a href="https://example.org" target="_blank" rel="noreferrer">网站 2</a>
+          </h3>
+          <p class="card-meta">类型：工具 / 效率</p>
+          <p>test2</p>
+        </article>
+
+        <!-- 以后可以继续在这里复制 article.card，填上真实的网站 -->
+      </div>
+    </section>
+
+    <!-- 功能 2：我的笔记（每篇笔记有摘要 + 分类） -->
+    <section id="notes" class="section">
+      <div class="section-header">
+        <h2>📒 我的笔记</h2>
+        <p class="section-desc">记录学习、项目和生活中的一些思考。</p>
+      </div>
+
+      <div class="card-list">
+        <article class="card">
+          <h3>
+            <a href="notes/note-1.html">示例笔记：我的第一个想法</a>
+          </h3>
+          <p class="card-meta">创建时间：2025-11-18 · 分类：个人规划</p>
+          <p>一句话摘要：用一小段话说明这篇笔记主要讲什么，方便以后扫一眼就知道内容。</p>
+        </article>
+
+        <!-- 后续新增 note-2.html、note-3.html 时，只要在这里再加几张卡片 -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2025 ty 张 · 个人中枢站</p>
+    </div>
+  </footer>
 </body>
 </html>
