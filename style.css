@@ -221,6 +221,18 @@ body {
   margin-bottom: 12px;
 }
 
+/* 通用图片居中类 */
+.img-center {
+  text-align: center;
+  margin: 16px 0;
+}
+
+.img-center img {
+  max-width: 100%;
+  height: auto;
+}
+
+
 /* 返回按钮 */
 .back-link {
   display: inline-flex;
