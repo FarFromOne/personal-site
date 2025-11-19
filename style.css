@@ -64,6 +64,65 @@ body {
   color: var(--accent);
 }
 
+/* 目录样式 */
+.toc {
+  margin: 16px 0 24px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid var(--border);
+}
+
+.toc-title {
+  margin: 0 0 8px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.toc ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.toc li {
+  margin: 2px 0;
+  list-style: none; /* 先不显示默认的小圆点，后面用缩进 + 按钮表示层级 */
+}
+
+.toc a {
+  color: var(--accent);          /* 比较亮的蓝色 */
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.toc a:hover {
+  color: #facc15;                /* hover 时变成黄一点 */
+}
+
+/* 目录折叠按钮 */
+.toc li.has-children {
+  position: relative;
+  padding-left: 16px;
+}
+
+.toc-toggle {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  border: none;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 12px;
+  padding: 0;
+  line-height: 1;
+}
+
+.toc-toggle:focus {
+  outline: none;
+}
+
+
 /* 模块 */
 .section {
   margin-top: 32px;
