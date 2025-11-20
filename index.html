@@ -10,8 +10,8 @@
   <header class="site-header">
     <div class="container header-inner">
       <div>
-        <h1 class="title">我的个人中枢站</h1>
-        <p class="subtitle">把我常看的网站和自己的思考集中放在一个地方。</p>
+        <h1 class="title">zhttp的个人中枢站</h1>
+        <p class="subtitle">个人中枢站，尚处于建设阶段</p>
       </div>
       <nav class="nav">
         <a href="#sites">常逛网站</a>
@@ -20,29 +20,57 @@
     </div>
   </header>
 
-  <main class="container">
+  <main class="container page-layout">
+
+       <!-- 左侧：时间侧边栏 -->
+  <aside class="time-sidebar">
+    <h2 class="time-title">⏰ 当前时间</h2>
+    <p class="time-subtitle">北京时间 & 美国东部时区</p>
+
+    <div class="time-block">
+      <div class="time-label">北京时间</div>
+      <div class="time-date" id="time-cn-date"></div>
+      <div class="time-clock" id="time-cn-clock"></div>
+    </div>
+
+    <div class="time-block">
+      <div class="time-label">美国东部</div>
+      <div class="time-date" id="time-us-date"></div>
+      <div class="time-clock" id="time-us-clock"></div>
+    </div>
+  </aside>
+
+  <div class="page-main">
     <!-- 功能 1：常逛网站（现在变成卡片 + 说明 + 类型） -->
     <section id="sites" class="section">
       <div class="section-header">
-        <h2>🧭 我常逛的网站</h2>
+        <h2>🧭 常逛网站</h2>
         <p class="section-desc">目前仅为测试阶段，后续添加实际内容</p>
       </div>
 
       <div class="card-list">
         <article class="card">
           <h3>
-            <a href="https://example.com" target="_blank" rel="noreferrer">网站 1</a>
+            <a href="https://linux.do/latest" target="_blank" rel="noreferrer">Linux do</a>
           </h3>
-          <p class="card-meta">类型：博客 / 技术</p>
-          <p>test1</p>
+          <p class="card-meta">类型：技术 / 论坛</p>
+          <p>“新的理想型社区” 软件 / AI / 技术分享</p>
         </article>
 
         <article class="card">
           <h3>
-            <a href="https://example.org" target="_blank" rel="noreferrer">网站 2</a>
+            <a href="https://bbs.eetop.cn/" target="_blank" rel="noreferrer">eetop</a>
           </h3>
-          <p class="card-meta">类型：工具 / 效率</p>
-          <p>test2</p>
+          <p class="card-meta">类型：技术 / 论坛</p>
+          <p>“中国著名的集成电路设计论坛” IC / 资源分享 /技术分享</p>
+        </article>
+
+        <article class="card">
+          <h3>
+            <a href="https://chatgpt.com/" target="_blank" rel="noreferrer">ChatGPT</a>
+          </h3>
+          <p class="card-meta">类型：AI</p>
+          <p>OpenAI推出的一种人工智能驱动的自然语言处理工具</p>
         </article>
 
         <!-- 以后可以继续在这里复制 article.card，填上真实的网站 -->
@@ -70,18 +98,79 @@
             <a href="notes/analysis and design of analog integrated circuits1.html">模拟集成电路设计与分析笔记</a>
           </h3>
           <p class="card-meta">创建时间：2025-11-20 · 分类：电路/模拟</p>
-          <p>test</p>
+          <p>基于Gary的模拟集成电路分析与设计的个人笔记</p>
         </article>
 
         <!-- 后续新增 note-2.html、note-3.html 时，只要在这里再加几张卡片 -->
       </div>
     </section>
+    </div>
   </main>
 
   <footer class="site-footer">
     <div class="container">
-      <p>© 2025 ty 张 · 个人中枢站</p>
+      <p>© 2025 zhttp · 个人中枢站</p>
     </div>
   </footer>
+
+  <script>
+    function formatTime(date, timeZone, locale) {
+      // 日期：YYYY-MM-DD
+      var dateOptions = {
+        timeZone: timeZone,
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit"
+      };
+      // 时间：HH:MM:SS（24 小时制）
+      var timeOptions = {
+        timeZone: timeZone,
+        hour12: false,
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"
+      };
+
+      var dateStr = date.toLocaleDateString(locale || "zh-CN", dateOptions);
+      var timeStr = date.toLocaleTimeString(locale || "zh-CN", timeOptions);
+
+      // 把 2025/11/20 这种改成 2025-11-20，更统一
+      dateStr = dateStr.replace(/\//g, "-");
+
+      return { dateStr: dateStr, timeStr: timeStr };
+    }
+
+    function updateClocks() {
+      var now = new Date();
+
+      // 北京：Asia/Shanghai
+      var cn = formatTime(now, "Asia/Shanghai", "zh-CN");
+      var cnDateEl = document.getElementById("time-cn-date");
+      var cnClockEl = document.getElementById("time-cn-clock");
+      if (cnDateEl && cnClockEl) {
+        cnDateEl.textContent = cn.dateStr + " （北京时间）";
+        cnClockEl.textContent = cn.timeStr;
+      }
+
+      // 美国东部时间 America/New_York
+      // 使用 en-US 只是格式稍微不一样，你也可以用 "zh-CN"
+      var us = formatTime(now, "America/New_York", "en-US");
+      var usDateEl = document.getElementById("time-us-date");
+      var usClockEl = document.getElementById("time-us-clock");
+      if (usDateEl && usClockEl) {
+        usDateEl.textContent = us.dateStr + " （Eastern Time）";
+        usClockEl.textContent = us.timeStr;
+      }
+    }
+
+    // 先立即更新一次
+    updateClocks();
+    // 每秒更新一次
+    setInterval(updateClocks, 1000);
+  </script>
+</body>
+</html>
+
+
 </body>
 </html>

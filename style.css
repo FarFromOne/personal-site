@@ -271,3 +271,82 @@ body {
     margin-left: 0;
   }
 }
+
+/* 整体两列布局：左边时间，右边内容 */
+.page-layout {
+  display: flex;
+  gap: 50px;
+  align-items: flex-start;
+}
+
+/* 左侧时间栏 */
+.time-sidebar {
+  flex: 0 0 220px;  /* 固定左侧宽度，可按喜好调大/调小 */
+  padding: 18px 18px 18px;
+  border-radius: 18px;
+  background: radial-gradient(circle at top left, #0f172a 0, #020617 45%, #000 100%);
+  border: 1px solid rgba(251, 191, 36, 0.4); /* 用一点金色，和右边区分开 */
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.9);
+
+  /*容器左移*/
+  margin-left: -140px;
+}
+
+/* 时间栏标题 */
+.time-title {
+  margin: 0 0 4px;
+  font-size: 18px;
+  color: #fde68a; /* 柔和的金色 */
+}
+
+.time-subtitle {
+  margin: 0 0 12px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* 每个时区块 */
+.time-block {
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  margin-bottom: 10px;
+}
+
+.time-label {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 2px;
+}
+
+.time-date {
+  font-size: 13px;
+  color: #e5e7eb;
+}
+
+.time-clock {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin-top: 2px;
+  color: #facc15; /* 时间本身突出一点 */
+}
+
+/* 右侧主内容区域 */
+.page-main {
+  flex: 1;
+}
+
+/* 手机小屏幕时，自动改为上下布局，不要两列挤在一起 */
+@media (max-width: 900px) {
+  .page-layout {
+    flex-direction: column;
+  }
+
+  .time-sidebar {
+    flex: none;
+    width: 100%;
+    margin-left: 0;
+  }
+}
