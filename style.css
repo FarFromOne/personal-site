@@ -257,20 +257,6 @@ body {
   text-align: center;
 }
 
-/* 移动端适配 */
-@media (max-width: 640px) {
-  .header-inner {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .nav {
-    display: flex;
-    gap: 12px;
-  }
-  .nav a {
-    margin-left: 0;
-  }
-}
 
 /* 整体两列布局：左边时间，右边内容 */
 .page-layout {
@@ -338,6 +324,21 @@ body {
   flex: 1;
 }
 
+/* 移动端适配 */
+@media (max-width: 640px) {
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .nav {
+    display: flex;
+    gap: 12px;
+  }
+  .nav a {
+    margin-left: 0;
+  }
+}
+
 /* 手机小屏幕时，自动改为上下布局，不要两列挤在一起 */
 @media (max-width: 900px) {
   .page-layout {
@@ -348,5 +349,6 @@ body {
     flex: none;
     width: 100%;
     margin-left: 0;
+    margin-top: 16px;
   }
 }
