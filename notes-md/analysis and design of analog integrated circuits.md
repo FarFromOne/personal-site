@@ -968,7 +968,7 @@ $$
 $$
 那么总的输出阻抗为：
 $$
-R_o=\frac{v_t}{i_t}\bigg|_{\substack{{v_{i1}=0} \\ v_{i2}=0}}\simeq \frac{1}{\frac{1}{r_{o(dp)}}+\frac{1}{r_{o(mir)}}}=r_{o(dp)}\parallel r_{o(mir)}
+R_o=\frac{v_t}{i_t}\bigg|_{\substack{v_{i1}=0 \\ v_{i2}=0}}\simeq \frac{1}{\frac{1}{r_{o(dp)}}+\frac{1}{r_{o(mir)}}}=r_{o(dp)}\parallel r_{o(mir)}
 $$
 往往在记忆这个输出阻抗以及推导其他放大器的输出阻抗时，我们简单的记忆为输出点的两个MOS管的输出阻抗的并联，这种理解从上述的分析可以发现有很大的问题，本质上是认为M1 M2的源极可以认为接地导致的，这种理解导致忽略了$r_{o2}$受到退化的影响以及电流镜对小信号的复制作用，不过从结果上看，复制小信号的部分正好是一个$2r_{o2}$的并联，导致结果是正确的，这种直觉式的分析虽然漏洞百出，不过在分析时确实会带来巨大的便捷，这一点在后续的cascode以及folded cascode都有展现。
 
@@ -1518,11 +1518,11 @@ I_Q=\frac{k'}{2}\frac{W}{L}\left(V_{ov}-A\left[\frac{V_{OSP}-V_{OSN}}{2}\right]\
 $$
 定义由于失调导致的静态电流差为$\Delta I_Q$:
 $$
-\Delta I_Q=I_Q|_{\substack{{V_{OSP}=0} \\V_{OSN}=0}}-I_Q=\frac{k'}{2}\frac{K}{L}A(V_{OSP}-V_{OSN})\left[V_{ov}-A\left(\frac{V_{OSP}-V_{OSN}}{4}\right) \right]
+\Delta I_Q=I_Q|_{\substack{V_{OSP}=0 \\V_{OSN}=0}}-I_Q=\frac{k'}{2}\frac{K}{L}A(V_{OSP}-V_{OSN})\left[V_{ov}-A\left(\frac{V_{OSP}-V_{OSN}}{4}\right) \right]
 $$
 再定义误差静态电流与理论静态电流的比值用以衡量偏差比：
 $$
-\frac{\Delta I_Q}{I_Q|_{\substack{{V_{OSP}=0} \\V_{OSN}=0}}}=A\left(\frac{V_{OSP}-V_{OSN}}{V_{ov}} \right)\left[1-\left(\frac{V_{OSP}-V_{OSN}}{4V_{ov}}\right) \right] \\
+\frac{\Delta I_Q}{I_Q|_{\substack{V_{OSP}=0 \\V_{OSN}=0}}}=A\left(\frac{V_{OSP}-V_{OSN}}{V_{ov}} \right)\left[1-\left(\frac{V_{OSP}-V_{OSN}}{4V_{ov}}\right) \right] \\
 \simeq A\left(\frac{V_{OSP}-V_{OSN}}{V_{ov}}\right)  当A(V_{OSP}-V_{OSN})\ll 4V_{ov}时
 $$
 根据如上的关系式，我们可以看出，如果已知失调电压大小，以及需要设计的静态电流的误差量，就可以反推出误差放大器的最大增益：

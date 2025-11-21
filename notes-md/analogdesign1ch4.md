@@ -66,11 +66,11 @@ I_Q=\frac{k'}{2}\frac{W}{L}\left(V_{ov}-A\left[\frac{V_{OSP}-V_{OSN}}{2}\right]\
 $$
 定义由于失调导致的静态电流差为$\Delta I_Q$:
 $$
-\Delta I_Q=I_Q|_{\substack{{V_{OSP}=0} \\V_{OSN}=0}}-I_Q=\frac{k'}{2}\frac{K}{L}A(V_{OSP}-V_{OSN})\left[V_{ov}-A\left(\frac{V_{OSP}-V_{OSN}}{4}\right) \right]
+\Delta I_Q=I_Q|_{\substack{V_{OSP}=0 \\V_{OSN}=0}}-I_Q=\frac{k'}{2}\frac{K}{L}A(V_{OSP}-V_{OSN})\left[V_{ov}-A\left(\frac{V_{OSP}-V_{OSN}}{4}\right) \right]
 $$
 再定义误差静态电流与理论静态电流的比值用以衡量偏差比：
 $$
-\frac{\Delta I_Q}{I_Q|_{\substack{{V_{OSP}=0} \\V_{OSN}=0}}}=A\left(\frac{V_{OSP}-V_{OSN}}{V_{ov}} \right)\left[1-\left(\frac{V_{OSP}-V_{OSN}}{4V_{ov}}\right) \right] \\
+\frac{\Delta I_Q}{I_Q|_{\substack{V_{OSP}=0 \\V_{OSN}=0}}}=A\left(\frac{V_{OSP}-V_{OSN}}{V_{ov}} \right)\left[1-\left(\frac{V_{OSP}-V_{OSN}}{4V_{ov}}\right) \right] \\
 \simeq A\left(\frac{V_{OSP}-V_{OSN}}{V_{ov}}\right)  当A(V_{OSP}-V_{OSN})\ll 4V_{ov}时
 $$
 根据如上的关系式，我们可以看出，如果已知失调电压大小，以及需要设计的静态电流的误差量，就可以反推出误差放大器的最大增益：
