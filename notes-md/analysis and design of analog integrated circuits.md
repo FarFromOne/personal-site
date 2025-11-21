@@ -1527,7 +1527,7 @@ $$
 $$
 根据如上的关系式，我们可以看出，如果已知失调电压大小，以及需要设计的静态电流的误差量，就可以反推出误差放大器的最大增益：
 $$
-A<\left(\frac{V_{ov}}{V_{OSP}-V_{OSN}} \right)\left(\frac{\Delta I_Q}{I_Q|_{\substack{{V_{OSP}=0} \\V_{OSN}=0}}} \right)
+A<\left(\frac{V_{ov}}{V_{OSP}-V_{OSN}} \right)\left(\frac{\Delta I_Q}{I_Q|_{\substack{V_{OSP}=0 \\V_{OSN}=0}}} \right)
 $$
 下图展示了一个利用误差放大器的输出级电路，包括了其中的误差放大器：
 <div align="middle"><img src="./pic/analog_ic_gray/pic_5.35.png " width=450 alt="图5.35"></div>
