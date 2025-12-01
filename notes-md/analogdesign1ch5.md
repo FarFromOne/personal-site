@@ -261,7 +261,9 @@ i_{tail}+v_s-g_m(0-v_s)=0 \\
 $$
 可以看到源电压确实受尾电流的小信号变化影响，而这个变化会通过$C_{gs}$耦合到M1的输出端，进而影响输出，在这里，电源电容为$C_{SUP}=C_{gs}$，解决方法是使用一个电源独立的尾电流源即可。
 
-<img src="E:\markdown_prj\pic\analog_ic_gray\pic_6.21.png" alt="pic_6.21" style="zoom:60%;" />
+<img ./pic/analog_ic_gray/src="./pic/analog_ic_gray/analog_ic_gray\pic_6.21.png"
+
+ alt="pic_6.21" style="zoom:60%;" />
 
 - 衬底效应的小信号馈通
 
@@ -286,7 +288,7 @@ $$
 
 提高增益的一种方法称为辅助放大器，即通过加上辅助的放大器在放大器内部以提高增益，这一点可以参考[Active Cascode](#Active Cascode)，
 
-<img src="E:\markdown_prj\pic\analog_ic_gray\pic_6.30.png" alt="pic_6.30" style="zoom:60%;" />
+<img src="./pic/analog_ic_gray/analog_ic_gray\pic_6.30.png" alt="pic_6.30" style="zoom:60%;" />
 
 上图展示了这种电路结构，根据以前的知识可以有：
 $$
@@ -297,11 +299,11 @@ $$
 
 关于辅助放大器的选择，考虑到输入端的电压偏置大小，如M4的漏极处于$V_{DD}-V_{ovp}$的大小，如果再选择输入管为PMOS的话，可能会出现辅助放大器工作在非饱和区的情况，所以上面两个辅助放大器可以选择NMOS输入的差分对，下面两个辅助放大器可以选择PMOS输入的差分对：
 
-<img src="E:\markdown_prj\pic\analog_ic_gray\pic_6.30(b)(c).png" alt="pic_6.30(b)(c)" style="zoom:70%;" />
+<img src="./pic/analog_ic_gray/analog_ic_gray\pic_6.30(b)(c).png" alt="pic_6.30(b)(c)" style="zoom:70%;" />
 
 同时，在将上图的b电路作为A1进行辅助时，需要注意输入与输出点的电压差，M22的输入为M4的漏极，而M22的输出为M4A的栅极，在放大的主体电路中，这两个点的电压差预计为$(|V_{tp}|+|V_{ovp}|)$，这也就意味着M22的栅漏压差也近似这个数值，也就是说M22的阈值电压需要大于这个数值才能保证M22工作在饱和区。同样的分析可以用于c图的辅助放大器。
 
-<img src="E:\markdown_prj\pic\analog_ic_gray\pic_6.30(d).png" alt="pic_6.30(d)" style="zoom:80%;" />
+<img src="./pic/analog_ic_gray/analog_ic_gray\pic_6.30(d).png" alt="pic_6.30(d)" style="zoom:80%;" />
 
 上图很好的展示了该电路的偏置电路，偏置电路的设计，本身就是对主体电路MOS管的一种复制，然后该复制形成自偏置之后再去偏置主体电路，$V_{BIAS1}$代表的是输入对管的电流源的偏置，其到$V_{DD}$差不多是$|V_{tp}|+|V_{ovp}|$，而$V_{BIAS4}$则是输出支路的电流源，其到$V_{SS}$差不多是$V_{tn}+V_{ovn}$，所以在偏置电路中可以直接用二极管连接的M102和M107形成，而对于$V_{BIAS2}$和$V_{BIAS3}$其差不多是一个过驱动电压的数量级，故用处于三极管区的MOS管形成，关于这一点的计算，可以参考[Cascode Current Mirror](#Cascode Current Mirror)，可以得到一个近似关系：
 $$

@@ -6,7 +6,7 @@
 
 **结构：**
 
-<img src="E:\markdown_prj\pic\power\chargepump\diodechargepump.png" style="zoom:77%;" />
+<img src="./pic/power/chargepump/diodechargepump.png" style="zoom:77%;" />
 
 - 输入：直流电源 $V_{in}$
 - 振荡器输出：方波 $V_{ctrl}$（在 0 和 $V_{in}$ 间摆动）
@@ -83,7 +83,7 @@ $$
 
 ## 2. 用 PMOS 替代 D1 的“错误”实现
 
-<img src="E:\markdown_prj\pic\power\chargepump\transistorchargepump(a).png" style="zoom:150%;" />
+<img src="./pic/power/chargepump/transistorchargepump(a).png" style="zoom:150%;" />
 
 图 8.6(a) 可视为图 8.5 的变体：  
 把 D1 换成了一个由振荡器驱动栅极的 PMOS M1，想实现更“理想”的开关。
@@ -202,7 +202,7 @@ $$
 
 ## 用 NMOS 替代 D1 的实现
 
-<img src="E:\markdown_prj\pic\power\chargepump\transistorchargepump(b).png" style="zoom:150%;" />
+<img src="./pic/power/chargepump/transistorchargepump(b).png" style="zoom:150%;" />
 
 图 8.6(b) 可以看作是在图 8.5 的基础上，把左侧二极管 D1 换成 **NMOS M1 + 反相器驱动的自举电容 $C_p$**。
 
@@ -329,7 +329,7 @@ $$
 
 ## 带局部自举的 nMOS 电荷泵（正确的 n 型实现）
 
-<img src="E:\markdown_prj\pic\power\chargepump\transistorchargepump(c).png" style="zoom:130%;" />
+<img src="./pic/power/chargepump/transistorchargepump(c).png" style="zoom:130%;" />
 
 ### 1. 拓扑概要
 
@@ -433,7 +433,7 @@ $$
 
 ## 交叉耦合 nMOS 电荷泵（cross-coupled charge pump）
 
-<img src="E:\markdown_prj\pic\power\chargepump\transistorchargepump(d).png" style="zoom:120%;" />
+<img src="./pic/power/chargepump/transistorchargepump(d).png" style="zoom:120%;" />
 
 ### 1. 拓扑概要
 
@@ -560,7 +560,7 @@ $$
 
 ## Cross coupled charge pump
 
-<img src="E:\markdown_prj\pic\power\chargepump\dualphasechargepump1.png" style="zoom:80%;" />
+<img src="./pic/power/chargepump/dualphasechargepump1.png" style="zoom:80%;" />
 
 ### 1. 电路结构
 
@@ -630,7 +630,7 @@ $$
 
 ### 5. 另一种思路
 
-<img src="E:\markdown_prj\pic\power\chargepump\dualphasechargepump.png" style="zoom:80%;" />
+<img src="./pic/power/chargepump/dualphasechargepump.png" style="zoom:80%;" />
 
 还有一种理解方式就是将M1A和M2A视为反相器`IA`，将M1B和M2B视为反相器`IB`，所有的晶体管就形成了交叉耦合CMOS反相器，工作原理如上图所示。
 
@@ -650,6 +650,6 @@ $$
 
 ### 6. 寄生bipolar
 
-<img src="E:\markdown_prj\pic\power\chargepump\layoutofinverterpng.png" style="zoom:60%;" />
+<img src="./pic/power/chargepump/layoutofinverterpng.png" style="zoom:60%;" />
 
 由于自举电压的存在，节点电压超过输入电压时，会有至少一个体二极管导通，所以需要仔细观察版图。上图所展示的是其中一个反相器，假设体二极管导通，电荷就会由寄生bipolar直接从集电极流向衬底，无法向节点充电，导致电荷泵失效，所以需要做好背栅连接和隔离如上图的图b所示。
