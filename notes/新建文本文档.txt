@@ -1,103 +1,58 @@
-<html>
-        <head>
-            <meta charset="UTF-8">
-            <title>Models for Intergrated-Circuit Active Devices</title>
-            <style>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>模拟电路笔记 · 第 1 章</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+</head>
+<body>
+  <main class="container">
+    <header class="article-header">
+      <h1 class="article-title">第 1 章：Models for Integrated-Circuit Active Devices</h1>
+      <p class="article-meta">
+        模拟集成电路设计与分析基础 · 第 1 章
+      </p>
+    </header>
 
-.vscode-dark img[src$=\#gh-light-mode-only],
-.vscode-light img[src$=\#gh-dark-mode-only],
-.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
-.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
-	display: none;
-}
+    <section class="article-content">
+      <!-- 等会把 markdown 转出来的 HTML 粘到这里 -->
+      
+      <!-- 此處結束 -->
+            <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+            
+    </section>
 
-</style>
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
-<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
-<style>
-            body {
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
-                font-size: 14px;
-                line-height: 1.6;
-            }
-        </style>
-        <style>
-.task-list-item {
-    list-style-type: none;
-}
+    <a href="analog-index.html" class="back-link">← 返回总目录</a>
 
-.task-list-item-checkbox {
-    margin-left: -20px;
-    vertical-align: middle;
-    pointer-events: none;
-}
-</style>
-<style>
-:root {
-  --color-note: #0969da;
-  --color-tip: #1a7f37;
-  --color-warning: #9a6700;
-  --color-severe: #bc4c00;
-  --color-caution: #d1242f;
-  --color-important: #8250df;
-}
+    <!-- 如果你已经做了“回到顶部按钮”，也可以一并贴在这里 -->
+     <!-- 回到顶部按钮 -->
+  <button class="back-to-top" id="backToTopBtn" aria-label="回到页面顶部">↑</button>
 
-</style>
-<style>
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-note: #2f81f7;
-    --color-tip: #3fb950;
-    --color-warning: #d29922;
-    --color-severe: #db6d28;
-    --color-caution: #f85149;
-    --color-important: #a371f7;
-  }
-}
+  <script>
+    // 监听滚动，控制按钮显隐
+    window.addEventListener("scroll", function () {
+      var btn = document.getElementById("backToTopBtn");
+      if (!btn) return;
+      if (window.scrollY > 1400) {
+        btn.classList.add("show");
+      } else {
+        btn.classList.remove("show");
+      }
+    });
 
-</style>
-<style>
-.markdown-alert {
-  padding: 0.5rem 1rem;
-  margin-bottom: 16px;
-  color: inherit;
-  border-left: .25em solid #888;
-}
-
-.markdown-alert>:first-child {
-  margin-top: 0
-}
-
-.markdown-alert>:last-child {
-  margin-bottom: 0
-}
-
-.markdown-alert .markdown-alert-title {
-  display: flex;
-  font-weight: 500;
-  align-items: center;
-  line-height: 1
-}
-
-.markdown-alert .markdown-alert-title .octicon {
-  margin-right: 0.5rem;
-  display: inline-block;
-  overflow: visible !important;
-  vertical-align: text-bottom;
-  fill: currentColor;
-}
-
-.markdown-alert.markdown-alert-note {
-  border-left-color: var(--color-note);
-}
-
-.markdown-alert.markdown-alert-note .markdown-alert-title {
-  color: var(--color-note);
-}
-
-
-</style>
-        
-        </head>
+    // 点击回到顶部
+    document.addEventListener("DOMContentLoaded", function () {
+      var btn = document.getElementById("backToTopBtn");
+      if (!btn) return;
+      btn.addEventListener("click", function () {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"  // 平滑滚动
+        });
+      });
+    });
+  </script>
+  </main>
+</body>
+</html>
