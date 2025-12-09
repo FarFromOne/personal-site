@@ -10,7 +10,7 @@
 
 MOS管和bipolar在模型上有一些相似之处，故在分析它们构成的单极放大器时，可以先对它们的通用模型进行分析，在对各自进行分类分析得到结果，如下图所示的是通用晶体管的小信号模型
 
-<img src="./pic/analog_ic_gray/analog_ic_gray\pic_7.1.png" style="zoom:60%;" />
+<img src="./pic/analog_ic_gray/pic_7.1.png" style="zoom:60%;" />
 
 在MOS管和bipolar中的各个元件有着不同的对应关系，如下表所示
 
@@ -26,7 +26,7 @@ MOS管和bipolar在模型上有一些相似之处，故在分析它们构成的�
 
 在分析电路中的一种近似方法就是米勒效应近似，为了解释这个近似，观察下面这个共源/共射单级放大器
 
-<img src="./pic/analog_ic_gray/analog_ic_gray\pic_7.2.png" style="zoom:60%;" />
+<img src="./pic/analog_ic_gray/pic_7.2.png" style="zoom:60%;" />
 
 其中的虚线框就是前面提到的通用模型，这种近似方法主要用于分析从输入端看进去的阻抗，即从上图的AA平面看进去的阻抗。也是用KCL进行分析，这里直接给结果：
 $$
@@ -40,13 +40,13 @@ $$
 $$
 C_M=[1-A_{v0}]C_f
 $$
-这种用低频时的增益替代复函数的增益被称为米勒近似(Miller Approximation)，而$C_M$被称为米勒电容(Miller Capacitance)，在这个共射/共源模型中，低频增益为$A_{v0}=-g_mR$，那么有米勒电容：
+这种用低频时的增益替代复函数的增益的近似被称为米勒近似(Miller Approximation)，而$C_M$被称为米勒电容(Miller Capacitance)，在这个共射/共源模型中，低频增益为$A_{v0}=-g_mR$，那么有米勒电容：
 $$
 C_M=[1+g_mR]C_f
 $$
 可以看到由于增益往往大于1，所以米勒电容通常大于反馈电容本身的阻抗。
 
-<img src="./pic/analog_ic_gray/analog_ic_gray\pic_7.3.png" style="zoom:80%;" />
+<img src="./pic/analog_ic_gray/pic_7.3.png" style="zoom:80%;" />
 
 那么我们可以得到上图的新的等效模型，用$C_M$替代了$C_f$，这可以更好的分析输入阻抗和前馈传输，但需要注意的是，**米勒近似在高频时的反馈传输和输出阻抗的分析时并不奏效**，它会造成电路零点的忽略和错误对输出阻抗的估计。米勒电容的物理意义是：由于在低频时，$C_f$的一端是$v_i$另一端是$-g_mRv_i$，那么就会有$(1+g_mR)v_i$的压差在$C_f$上进而流过$i_1$的电流，而米勒电容的两端压差仅有$v_i$，要产生一样的电流$i_1$，就需要将电容扩大$(1+g_mR)$倍以产生一样的电流模型。
 
@@ -80,7 +80,7 @@ $$
 $$
 再进行精确分析，采用下图中对输入源进行诺顿等效的电路：
 
-<img src="./pic/analog_ic_gray/analog_ic_gray\pic_7.4.png" style="zoom:80%;" />
+<img src="./pic/analog_ic_gray/pic_7.4.png" style="zoom:80%;" />
 
 其中由诺顿等效的阻抗$R=(R_{S}+r_x)\parallel r_{in}$，等效的输入电流源$i_{i}=\frac{v_{i}}{R_{S}+r_x}$
 
@@ -129,9 +129,9 @@ $$
 
 下图展示的是典型的差动对电路，$v_i$为小信号输入，$E$为虚拟地，而等效的差模半边电路如图7.6所示。
 
-<img src="./pic/analog_ic_gray/analog_ic_gray\pic_7.5.png" style="zoom:50%;" />
+<img src="./pic/analog_ic_gray/pic_7.5.png" style="zoom:50%;" />
 
-<img src="./pic/analog_ic_gray/analog_ic_gray\pic_7.6.png" style="zoom:60%;" />
+<img src="./pic/analog_ic_gray/pic_7.6.png" style="zoom:60%;" />
 
 上图所展示的是差模半边电路和它的小信号等效电路，其中忽略了$C_{cs}$，如果有必要的话，可以将其与$R_L$并联形成$Z_L$。
 
@@ -162,11 +162,11 @@ $$
 
 #### MOS差分放大器差模增益
 
-<img src="./pic/analog_ic_gray/analog_ic_gray\pic_7.9.png" style="zoom:60%;" />
+<img src="./pic/analog_ic_gray/pic_7.9.png" style="zoom:60%;" />
 
 上图展示的是MOS管组成的差动对，和bipolar类似，而下图展示的则是其差分半边电路和小信号等效模型。
 
-<img src="./pic/analog_ic_gray/analog_ic_gray\pic_7.10.png" style="zoom:50%;" />
+<img src="./pic/analog_ic_gray/pic_7.10.png" style="zoom:50%;" />
 
 虽然在小信号中忽略了输入和输出的二分之一，但无伤大雅。此外还忽略了$C_{sb}$和体效应的$g_{mb}$，因为设$v_{bs}=0$，同时还忽略了$C_{db}$，如果有必要可以将其与$R_L$并联得到$Z_L$进行分析；此外忽略了$C_{gb}$，因为其在小信号中可以和$C_{gs}$合并得到$C_{gs}+C_{gb}$，又因为$C_{gs}\gg C_{gb}$，故$C_{gs}+C_{gb}\approx C_{gs}$。代入MOS的小信号模型进通用模型的结果得到：
 $$
@@ -199,7 +199,7 @@ $$
 
 下图展示的是bipolar和MOS差分放大器的共模半边电路，其中$R_T$和$C_T$代表尾电流源的输出阻抗和寄生电容，由于半边电路使得共用阻抗翻倍，故$R_T$和$C_T$分别变为$2R_T$和$C_T/2$。
 
-<img src="./pic/analog_ic_gray/analog_ic_gray\pic_7.11.png" style="zoom:60%;" />
+<img src="./pic/analog_ic_gray/pic_7.11.png" style="zoom:60%;" />
 
 直接对整个电路进行分析是困难的，我们可以先对尾电流源的两个元件进行分析，为了尾电流源有较强的抗干扰性，其一般会设计的较长，甚至采用cascode结构，那么会导致$R_T$往往很大，而$C_T$所包含的部分除了尾电流源的$C_{cs}$或$C_{db}$，还有输入管的$C_{sb}$，所以假设这个电容也很大，$R_T$取1$M\Omega$，$C_{T}$取$1pF$，（%其实这个数值在现代工艺很难到这么夸张，我用.18工艺电阻测得一半都达不到，电容可以靠近一些，但也到不了1pF，不过主要是能体现这个点的极点较近就行%）那么这个时间常数$R_TC_T=1\mu s$，同时可以得到转折频率为$1/(2\pi R_TC_T)=166kHz$，在这个频率下阻抗主要由$R_T$控制，高于这个频率由$C_T$控制，鉴于这个频率很低，故一般来说这个阻抗$Z_T=R_T\parallel C_T$的变化早于电路其他部分变化。
 
@@ -217,7 +217,7 @@ A_{cm}(s)=\frac{v_{oc}}{v_{ic}}(s)\approx-\frac{R_L}{2R_{t}}(1+sC_TR_T)
 $$
 可以看出共模增益在$\omega =1/R_TC_T$之后以6dB/octave上升，但也不能无限上升，因为之后电路中其他的电容开始起作用，使得增益下降，不过这个下降的频率处于非常高的位置。
 
-<img src="./pic/analog_ic_gray/analog_ic_gray\pic_7.12.png" style="zoom:67%;" />
+<img src="./pic/analog_ic_gray/pic_7.12.png" style="zoom:67%;" />
 
 上图所展示了电路有关共模的频率特性，图a展示的是共模增益的变化，图b展示的是差模增益的变化，差模增益在$f=1/2\pi RC_t$后开始以-6dB/octave下降（%不要在意符号问题%），其中$R=(R_s+r_x)\parallel r_{in}$，$C_t=C_{in}+C_{M}$，根据之前章节的对于CMRR的定义：
 $$
@@ -225,13 +225,13 @@ CMRR=\frac{|A_{dm}|}{|A_{cm}|}
 $$
 在幅值响应关系上，可以考虑为差模减去共模(log关系)，也就是在图c中所示，CMRR在$1/2\pi R_TC_T$开始由于$|A_{cm}|$的上升而下降，而在差模增益在$1/2\pi RC_t$下降之后进一步加速下降，因此，随着共模信号频率上升，抑制共模信号的能力也会进一步下降。
 
-<img src="./pic/analog_ic_gray/analog_ic_gray\pic_7.12_sim.png" style="zoom:65%;" />
+<img src="./pic/analog_ic_gray/pic_7.12_sim.png" style="zoom:65%;" />
 
 上图展示的是用OTA作为第一级，共源作为第二级的二级运放的$A_{cm}$响应图（%其实是CMRR图，因为仿真的方法是将运放接为单位增益，然后再在两个输入端同时加大小为1的ac信号，故$A_{dm}=1$，用这种方法测得的$A_{cm}$也就自然是CMRR了%），由于第二级为单端输入单端输出，不对CMRR提供贡献。而第一级虽然并非全差分，但在假设完全对称时也可以类似的假设CMRR的分析成立，可以看到在251kHZ附近$A_{cm}$开始变大，而在190MHz附近$A_{cm}$开始变小，完全符合分析结果。类似的结果可以在其他结构的运放进行验证。
 
 ### 跟随器的频率响应
 
-<img src="./pic/analog_ic_gray/analog_ic_gray\pic_7.13.png" style="zoom:67%;" />
+<img src="./pic/analog_ic_gray/pic_7.13.png" style="zoom:67%;" />
 
 上图所展示的是典型的跟随器结构以及其通用小信号模型，$R_S$为输入源电阻，$R_L$为负载电阻，假设晶体管的输出阻抗$r_o$远大于负载电阻，那么在小信号中它们处于并联关系可以省略为单个负载电阻，同时将$R_S$和$r_x$合并为$R_s'$，除此之外还忽略$C_f$的影响，因为在电阻$R_S'$较小的情况下，其与$C_f$组成的低通滤波导致增益下降的频率处于极高位置，进而先把它忽略。
 
@@ -255,7 +255,7 @@ $$
 
 #### 射级跟随器频率响应
 
-<img src="./pic/analog_ic_gray/analog_ic_gray\pic_7.14.png" style="zoom:80%;" />
+<img src="./pic/analog_ic_gray/pic_7.14.png" style="zoom:80%;" />
 
 上图是射级跟随器的小信号图，其中忽略了$C_{\mu}$，和在分析共射一样，代入bipolar的模型进入通用结果可以得到：
 $$
@@ -268,7 +268,7 @@ R_1=r_{\pi}\parallel \frac{R_S'+R_L}{1+g_mR_L}
 $$
 一般而言，零点的位置会略大于极点的位置，它们同时又都接近特征频率。假如$g_mR_L\gg1$，且$R_S'\ll R_L$，那么$R_1\approx 1/g_m$，则极点也处于特征频率附近，然而如果$R_S'$也较大，那么极点位置就会小于特征频率。
 
-<img src="./pic/analog_ic_gray/analog_ic_gray\pic_7.15.png" style="zoom:75%;" />
+<img src="./pic/analog_ic_gray/pic_7.15.png" style="zoom:75%;" />
 
 上图展示了一个案例，实线为$C_{\mu}/C_{gd}$为0时的情况，其中零点为$-3.85\times 10^9 rad/s$，极点为$-3.57\times 10^9 rad/s$，两者位置很近，在高频情况下，$C_{\pi}$被短路，而受控源$g_mv_1$输出为0，增益表现为简单的分压$R_L/(R_L+R_S')$，而加入被忽略的$C_{\mu}$，其也起到分压的作用，其一段连在基极，一段在接在地的集电极，而在高频时体现为低通的衰减，如图所示，这种情况下电路的$f_{-3dB}$为$725MHz$，但依然有着很高的带宽。
 
@@ -299,7 +299,7 @@ C=\frac{C_\pi}{1+g_mR_L}
 $$
 可以将输入阻抗的模型简化为下图：
 
-<img src="./pic/analog_ic_gray/analog_ic_gray\pic_7.16.png" style="zoom:67%;" />
+<img src="./pic/analog_ic_gray/pic_7.16.png" style="zoom:67%;" />
 
 如果需要考虑$C_{\mu}$，可以将其加在B'和地之间，会表现为一个处于高频的极点，总之，输入阻抗在高频会表现为容性而下降。
 
@@ -315,7 +315,7 @@ $$
 
 假设集电极的偏置使得输出阻抗为感性，那么可以表现为如下图所示的简化模型：
 
-<img src="./pic/analog_ic_gray/analog_ic_gray\pic_7.17.png" style="zoom:67%;" />
+<img src="./pic/analog_ic_gray/pic_7.17.png" style="zoom:67%;" />
 
 在低频时，电感短路，阻抗为$\left.z_o\right|_{\omega =0}=R_1\parallel R_2$，如果$R_1\ll R_2$，则$\left.z_o\right|_{\omega =0}\approx R_1$；在高频时，电感开路，阻抗为$\left.z_o\right|_{\omega =\infty}=R_2$，根据电路图可以得到输出阻抗的表达式：
 $$
@@ -347,7 +347,7 @@ $$
 
 #### 源极跟随器频率响应
 
-<img src="./pic/analog_ic_gray/analog_ic_gray\pic_7.18.png" style="zoom:67%;" />
+<img src="./pic/analog_ic_gray/pic_7.18.png" style="zoom:67%;" />
 
 上图展示的是源极跟随器的小信号模型，我们首先不考虑$C_{gd},C_{gb},C_{sb}$的影响，这个模型与射级跟随器的重要区别在于体效应的$g_{mb}$，这受控源可以用$1/g_{mb}$大小的电阻替换，其与$R_L$并联，表示为$R_L'=R_L\parallel (1/g_{mb})$，同样用MOS的元件替换通用模型中的元件可以得到：
 $$
@@ -386,9 +386,9 @@ p_{1,2}=-5.1\times 10^9\pm j2.3 \times 10^9 rad/s
 $$
 有关图如下：
 
-<img src="./pic/analog_ic_gray/analog_ic_gray\pic_7.19a.png" style="zoom:50%;" />
+<img src="./pic/analog_ic_gray/pic_7.19a.png" style="zoom:50%;" />
 
-<img src="./pic/analog_ic_gray/analog_ic_gray\pic_7.19bc.png" alt="pic_7.19bc" style="zoom:50%;" />
+<img src="./pic/analog_ic_gray/pic_7.19bc.png" alt="pic_7.19bc" style="zoom:50%;" />
 
 可以看出，极点和零点离得很近，图上表现为单极点的滚落，但是可以得知的是源极跟随器的带宽依然很大，有$f_T$的数量级。
 
@@ -408,7 +408,7 @@ $$
 
 ### 共基共栅频率响应
 
-<img src="./pic/analog_ic_gray/analog_ic_gray\pic_7.20.png" style="zoom:60%;" />
+<img src="./pic/analog_ic_gray/pic_7.20.png" style="zoom:60%;" />
 
 上图展示的是共基级和共栅级的电路图，以及它们的通用小信号模型，这种结构有着低的输入阻抗，高的输出阻抗，接近1的电流增益(current buffer)，大的带宽。在小信号图中，使用了诺顿等效表示了输入信号，不过在接下来的分析中我们会忽略$R_S$，因为其相比输入阻抗小得多，同时如果$r_x$很小，可以将电容$C_f$视作单纯与$R_L$进行了简单的并联，同时忽略了小信号阻抗$r_o$，输出电流全部由$g_m$提供流向$C_f$和$R_L$的并联。
 $$
@@ -420,7 +420,7 @@ $$
 
 #### 共基级频率响应
 
-<img src="./pic/analog_ic_gray/analog_ic_gray\pic_7.21.png" style="zoom:67%;" />
+<img src="./pic/analog_ic_gray/pic_7.21.png" style="zoom:67%;" />
 
 上图是共基级的小信号模型，代入到通用模型的解当中可得：
 $$
@@ -440,7 +440,7 @@ $$
 
 #### 共栅级频率响应
 
-<img src="./pic/analog_ic_gray/analog_ic_gray\pic_7.22.png" style="zoom:67%;" />
+<img src="./pic/analog_ic_gray/pic_7.22.png" style="zoom:67%;" />
 
 上图展示的是共栅级的小信号模型，与通用模型有小小的差别，首先是体效应的$g_{mb}$受控源，由于其控制电压$v_{bs}$和$g_m$的控制电压$v_{gs}$一致，所以直接可以直接合并，此外还有寄生电容$C_{gb},C_{gd},C_{sb}$，首先$C_{gb}$被短路，所以省略，$C_{gd}$与$R_L$并联，如果考虑输出信号为电流，可以被忽略，然后是$C_{sb}$，其与$C_{gs}$并联。
 
@@ -511,7 +511,7 @@ $$
 
 电路中的极点都和电容有关，而零值时间常数法是通过将每个电容都置零（开路，故该方法也称开路时间常数法,open-circuit time-constant analysis，当然输入也要置零），然后计算从每个电容看进电路的电阻，相乘得到该电容的时间常数，然后相加所有电容的时间常数便是主极点的时间常数。
 
-<img src="./pic/analog_ic_gray/analog_ic_gray\pic_7.24.png" style="zoom:60%;" />
+<img src="./pic/analog_ic_gray/pic_7.24.png" style="zoom:60%;" />
 
 上图所展示的是一个使用内部电容反馈的共射级放大器，根据上面的说法，有：
 $$
@@ -550,7 +550,7 @@ $$
 
 下图展示的射级跟随器的小信号电路进一步阐述这个方法，
 
-<img src="./pic/analog_ic_gray/analog_ic_gray\pic_7.26.png" style="zoom:60%;" />
+<img src="./pic/analog_ic_gray/pic_7.26.png" style="zoom:60%;" />
 
 在$C_\pi$进行电阻的求解，根据KCL可以得到：
 $$
@@ -561,3 +561,108 @@ $$
 |p|=\frac{1}{R_{\pi 0}C_{\pi}}
 $$
 但需要注意的是，该方法没有给出零点的情况，所以上面得到的主极点并不是-3dB点频率，然而，这依然是一个非常实用的方法，我们可以自行对零点的存在进行预判和分析，*这类电路通常有一条直接耦合输入和输出的电容通路，就像$C_{\pi}$在发射极跟随器中的作用一样。*
+
+关于零值时间常数法，其通过计算各个电容的时间常数得到预测的主极点，它可以帮助我们得知电路中哪个元件对-3dB频率影响最大。
+
+同时需要注意一点，我们常说的主极点近似与零值时间常数法中的主极点近似有些许不同，前者通常指代的是在电路中某个节点其极点较小，我们认为其为电路的主极点且视为-3dB频率（由于一些寄生的米勒电容，这种假设也许成立），但后者是指忽略其他更大的极点而只关注最小的极点，并不对电路的节点进行忽略，所以其包含了所有节点带来的极点信息，举一个例子：
+
+假设一个电路有两个一样大的负实极点$\omega_x$，那么电路的幅频响应为：
+$$
+|G(j\omega)|=\frac{G_0}{1+\left(\frac{\omega}{\omega_x}\right)^2}
+$$
+那么这个电路的-3dB频率为：
+$$
+\omega_{-3dB}=\omega_{x}\sqrt{\sqrt{2}-1}=0.64\omega_x
+$$
+而零值时间常数法预估的极点为：
+$$
+\sum T_0=\frac{2}{\omega_x}
+$$
+则基于这个主极点假设得到的-3dB频率为：
+$$
+\omega_{-3dB}=\frac{1}{\sum T_0}=0.5\omega_x
+$$
+可以看到和真正的-3dB频率的误差为22%，而假设是直接的主极点假设（即假设只有一个主极点），则其主极点就是-3dB频率，即：
+$$
+\omega_{-3db}=\omega_{x}
+$$
+这个误差来到了0.36%。
+
+总而言之，只要电路的不同部分之间存在高度隔离，就可以使用这种技术。要估算给定部分的主极点，可对该部分的零值时间常数求和。
+
+### 电流镜负载差分对的频率响应
+
+电流镜负载的差分对的小信号增益之前已经介绍，而主要的小信号增益随频率变化（[MOS差分放大器差模增益](#MOS差分放大器差模增益)）以及CMRR（[差分放大器的共模增益](#差分放大器的共模增益)）也在之前部分介绍了，但有一个差别就是电流镜带来的零极点，下图展示的是有源负载差分对的电路图：
+
+<img src="E:\personal-site\notes-md\pic\analog_ic_gray\pic_7.33(a).png" style="zoom:67%;" />
+
+由于我们只关注电流镜带来的影响，故假设所有MOS管的$r_o\to \infty$并且忽略所有寄生电容，除了X点的电容，则简化的小信号图如下：
+
+<img src="E:\personal-site\notes-md\pic\analog_ic_gray\pic_7.33(b).png" style="zoom:67%;" />
+
+其中$C_x$包括了$C_{gs3},C_{gs4}$以及其他的寄生电容，对于完全的差分输入，可以把Y看作交流地。
+
+根据ZVTC可以得到$C_x$相关的极点为
+$$
+p=-\frac{g_{m3}}{C_{x}}
+$$
+以及一个零点：
+$$
+z=-\frac{2g_{m3}}{C_x}
+$$
+> 鉴于拉扎维和格雷都没有给出计算过程，这里简单推导一下这个零点：
+>
+> 根据输出节点的KCL：$i_o=-i_{d4}-i_{d2}$
+>
+> 其中$i_{d4}=g_{m4}v_{x}$，$i_{d2}=-g_{m2}\frac{v_{in}}{2}$；
+>
+> 而$v_x/(\frac{1}{g_{m3}}\parallel \frac{1}{sC_x})=-i_{d1}=-g_{m1}\frac{v_{in}}{2}$
+>
+> 联立上面的关系消去$v_x$，得到$G_m$的关系式：
+> $$
+> G_m=\frac{i_{out}}{v_{in}}=g_{m1}\frac{1+\frac{sC_x}{2g_{m3}}}{1+\frac{sC_x}{g_{m3}}}
+> $$
+
+这是一个左半平面零点，其是上面那个极点的两倍大小，相关的幅频相频图如下：
+
+<img src="E:\personal-site\notes-md\pic\analog_ic_gray\pic_7.34.png" style="zoom:67%;" />
+
+可以看到其对于相频影响为0~-19.4°，对于幅频响应的影响可以这样理解：在原来输出电流由$i_2$和$i_4$一起决定，而在高频之后$C_x$被短路，则$i_4$变为零，故跨导减半，这个短路的过程发生在极点和零点之间，不过鉴于$C_x\approx C_{gs3}+C_{gs4}\approx 2C_{gs3}$，那么$|p|\approx g_{m3}/2C_{gs3}\approx \omega_{T(M_3)}/2$，所以这对零极点仅在极高频对电路产生影响。但在一些结构中，如cascode结构中，这个极点可能因为寄生的电容过多导致下降的很快，尤其是受cascode电流镜的宽影响，会影响电路的稳定性。
+
+> 此外还有一个推论，在左半平面，当极点和零点成对出现时，即$z=\alpha p$零点位置处于极点位置$\alpha$倍，在极点处的增益为$A_p$，经过极点后增益开始下降，到达零点后增益变得平缓，且增益为$A_z$，就满足$A_z=\frac{1}{\alpha}A_{p}$，当极点在前时，$\alpha$大于1，$A_{z}<A_{p}$，反之也成立。
+
+## 频域响应与时域响应
+
+之前所讨论的频率响应的效果均是基于输入正弦波的情况，也就是直接取$s=j\omega$的情况，但实际输入时可能会遇到更多的情况，如输入方波，三角波等等，了解对于这些输入信号在电路的频率响应和时域响应也是有必要的。
+
+我们考虑一个简单的电路，其传递函数如下，仅包含一个负实极点：
+$$
+\frac{v_o}{v_i}(s)=\frac{K}{1-\frac{s}{p_1}}
+$$
+其中$K$为低频增益，$p_1$为主极点，那么-3dB频率为$\omega_{-3dB}=-p_1$，现在输入一个小的阶跃信号大小为$v_a$，假设电路的响应是线性的，对于输入的阶跃信号的频域变换式为$v_i(s)=v_a/s$，那么有输出的频率响应：
+$$
+v_o(s)=\frac{Kv_a}{s}\frac{1}{1-\frac{s}{p_1}}=Kv_a\left(\frac{1}{s}-\frac{1}{s-p_1}\right)
+$$
+那么其时域的阶跃响应即为：
+$$
+v_o(t)=Kv_a(1-e^{p_1t})
+$$
+其关系如下图所示：
+
+<img src="E:\personal-site\notes-md\pic\analog_ic_gray\pic_7.38.png" style="zoom:67%;" />
+
+可以得知输出逼近$Kv_a$，且指数项的时间常数为$-\frac{1}{p_1}$。取上升时间(rise time)为输出信号从最终值的10%到90%的时间变化量的话，则有：
+$$
+0.1Kv_a = Kv_a(1 - e^{p_1 t_1})\\
+0.9Kv_a = Kv_a(1 - e^{p_1 t_2})
+$$
+那么可以解出上升时间：
+$$
+t_r=t_2-t_1=-\frac{1}{p_1}ln9=\frac{2.2}{\omega_{-3dB}}=\frac{0.35}{f_{-3dB}}
+$$
+假设$f_{-3dB}=10MHz$，那么可以得知上升时间为35ns。
+
+在这一节的结尾，需要提醒的几点有：
+
+- 以上的一些公式和计算均基于阶跃响应输入到单极点的稳定系统，如果是多极点系统，那么虽然大体的上升/下降趋势和单极点相似，但具体响应会有可能截然不同，比如说对于存在复极点的系统，在其频率响应上会出现尖峰(peaking)，其时域响应会出现过冲(overshoot)，而对于一些极点分离较远的情况，可能有过阻尼(damping)的现象，这些会在之后的稳定性分析中仔细分析。
+-  以上的分析均基于输入是**小信号**的情况，也就是放大器仍然工作于线性情况，但如果输入的信号过大导致放大器工作于非线性的情况，输出的情况和这里的分析就大相径庭了，大信号的分析也会在稳定性的分析中提及。
