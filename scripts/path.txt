@@ -1,0 +1,21 @@
+- personal-site
+    - .git 
+    - assets #素材存储文件夹
+        - pic #图片文件夹
+            -analog_ic_gray #图片子文件夹1
+            - power #图片子文件夹2
+    - notes #笔记的网页格式文件夹
+        - analogch1.html
+        - analogch2.html
+        ...
+    - notes-md #笔记的markdown格式文件夹
+        -pic #markdown文件的图片引用库文件夹
+            -ADC #图片子文件夹1
+            -analog_ic_gray #图片子文件夹2
+            - power #图片子文件夹3
+        - analogch1.md
+        - analogch2.md
+        ...
+    - scripts #脚本文件夹
+    - index.html #主页
+    - style.css #css文件
