@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>this is a note for test</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+</head>
+<body>
+  <main class="container">
+    <header class="article-header">
+      <h1 class="article-title">this is a note for test</h1>
+      <p class="article-meta">
+        这是副标题 test1
+      </p>
+    </header>
+
+    <section class="article-content">
+      <!-- 等会把 markdown 转出来的 HTML 粘到这里 -->
+      <div class="toc">
+<ul>
+<li><a href="#test1">test1</a><ul>
+<li><a href="#test1_1">test1_1</a></li>
+</ul>
+</li>
+<li><a href="#test2">test2</a></li>
+<li><a href="#this-is-a-test-for-multiple-h1-titles">this is a test for multiple h1 titles</a><ul>
+<li><a href="#test-3">test 3</a><ul>
+<li><a href="#test-3_1">test 3_1</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="test1">test1</h2>
+<div class="img-center"><img src="../assets/pic/ADC/adc1_4.png" style="zoom:60%;"  width="600" height="400" alt="adc1_4"></div>
+<p>$I_{D}=\frac{1}{2}\mu_nC_{ox}\frac{W}{L}(V_{gs}-V_{th})^2$</p>
+<p>这是一个测试markdown文件</p>
+<h3 id="test1_1">test1_1</h3>
+<p>SSSSS</p>
+<h2 id="test2">test2</h2>
+<table>
+<thead>
+<tr>
+<th>P</th>
+<th>V</th>
+<th>T</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+<p>$$
+A_v=G_mR_{out} \\
+A=\frac{a}{1+af}
+$$</p>
+<h1 id="this-is-a-test-for-multiple-h1-titles">this is a test for multiple h1 titles</h1>
+<h2 id="test-3">test 3</h2>
+<p>TTTT</p>
+<h3 id="test-3_1">test 3_1</h3>
+<p>KKKK</p>
+<p>量化噪声的能量功率为
+$$
+P_{noise}=\frac{1}{q}\int^{\frac{q}{2}}_{-\frac{q}{2}}x^2dx=\frac{LSB^2}{12}
+$$</p>
+<p>信号的能量功率为
+$$
+P_{signal}=\left(\frac{FS}{2\sqrt{2}}\right)^2=\left(\frac{2^N\cdot LSB}{2\sqrt{2}}\right)^2
+$$
+则信噪比为
+$$
+SNR=10log_{10}\frac{P_{signal}}{P_{noise}}=6.02\times N+1.76dB
+$$
+还有一种写法的SNR：
+$$
+SNR=6.02\times N+1.76dB+10log_{10}\frac{f_s}{2\cdot BW}
+$$</p>
+      <!-- 此處結束 -->
+            <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+            
+    </section>
+
+    <a href="../index.html" class="back-link">← 返回总目录</a>
+
+    <!-- 如果你已经做了“回到顶部按钮”，也可以一并贴在这里 -->
+     <!-- 回到顶部按钮 -->
+  <button class="back-to-top" id="backToTopBtn" aria-label="回到页面顶部">↑</button>
+
+  <script>
+    // 监听滚动，控制按钮显隐
+    window.addEventListener("scroll", function () {
+      var btn = document.getElementById("backToTopBtn");
+      if (!btn) return;
+      if (window.scrollY > 1400) {
+        btn.classList.add("show");
+      } else {
+        btn.classList.remove("show");
+      }
+    });
+
+    // 点击回到顶部
+    document.addEventListener("DOMContentLoaded", function () {
+      var btn = document.getElementById("backToTopBtn");
+      if (!btn) return;
+      btn.addEventListener("click", function () {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"  // 平滑滚动
+        });
+      });
+    });
+    
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$',  right: '$',  display: false},
+            {left: '\\(', right: '\\)', display: false},
+            {left: '\\[', right: '\\]', display: true}
+          ]
+        });"></script>
+
+  </main>
+</body>
+</html>

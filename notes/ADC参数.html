@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>ADC参数</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+</head>
+<body>
+  <main class="container">
+    <header class="article-header">
+      <h1 class="article-title">ADC参数</h1>
+      <p class="article-meta">
+        
+      </p>
+    </header>
+
+    <section class="article-content">
+      <!-- 等会把 markdown 转出来的 HTML 粘到这里 -->
+      <p>一些参数的分类或许在不同的说法中有所不同，这里仅作记录参考</p>
+<h2 id="_1">基本参数</h2>
+<ul>
+<li>分辨率/精度 resolution</li>
+</ul>
+<p>也就是常说的位数，模拟信号用数字信号二进制来表示，精度与参考电压共同决定能检测输入电压的最小变化量，例如4位ADC能表示在满量程中的16个模拟值，位数越多，转换精度越高。</p>
+<ul>
+<li>采样速率 sampling time</li>
+</ul>
+<p>也是指最高采样速率，$f_s$，指对输入信号的采样速率，越高可以采样变化更快的数据，常用单位是$ksps$或$Msps$，表示每秒采样千/百万次(kilo/Million Samples per Second)</p>
+<ul>
+<li>转换时间 conversion time</li>
+</ul>
+<p>代表将一个模拟量转换成数字量的所需时间，其倒数为转换速率，其数值一般与ADC结构有关</p>
+<div class="img-center"><img src="../assets/pic/ADC/conversiontime.png" style="zoom:50%;"  width="600" height="400" alt="conversiontime"></div>
+<ul>
+<li>参考电压 reference voltage</li>
+</ul>
+<p>进行模数转换时ADC所能测量的最大模拟输入电压，决定了满量程的范围和精度稳定性，其自身精度和温漂会影响ADC整体精度</p>
+<ul>
+<li>输入量程/满量程输入范围 input range/full-scale range</li>
+</ul>
+<p>允许输入的模拟信号范围，超过这个范围出现失真。</p>
+<ul>
+<li>最低有效位 One least significant bit LSB</li>
+</ul>
+<p>又称最小分辨率，也就是之前分辨率中所说的能检测的最小模拟量变化，即参考电压除以精度</p>
+<p>此外还有功耗，架构，封装，应用场景等其他指标</p>
+<h2 id="_2">静态参数</h2>
+<ul>
+<li>微分非线性 differential nonlinearity DNL</li>
+</ul>
+<p>模数转换器的实际步长和理想步长之间的最大差值，通常以LSB表征，假设第K次转换的实际步长为$\Delta A_k$，其计算为：
+$$
+DNL_k=\frac{\Delta A_k-LSB}{LSB}
+$$
+最糟糕的情况就是DNL=-1，也就是失码情况（missing code）</p>
+<div class="img-center"><img src="../assets/pic/ADC/adc1_2.png" style="zoom:60%;"  width="600" height="400" alt="adc1_2"></div>
+<ul>
+<li>积分非线性 integral nonlinearity INL</li>
+</ul>
+<p>指模数转换器实际的量化输出与理想的量化输出的最大差值，以LSB表征，假设第K次跳变的模拟信号值为$A_k$，则其对应的INL为：
+$$
+INL=\frac{A_k-k\cdot LSB}{LSB} \\
+INL_k=\sum_{i=1}^{k}DNL_i
+$$
+在实际测量仿真时并不是真的按照公式计算DNL，而是采用码密度方法（code density），输入一个斜波或者正弦波，以前者为例，如果DNL=0，即理想情况，则每个输入的采样点到输出的码都是等概率的，每个码都有相同数量的点或者概率，如果非理想，这个概率就会出现偏差，通过计算这个概率偏差可以得到DNL，通过对DNL求和可以得到INL</p>
+<div class="img-center"><img src="../assets/pic/ADC/adc1_4.png" style="zoom:60%;"  width="600" height="400" alt="adc1_4"></div>
+<p>测量得到的INL在中间位置可能出现跳变，如下图所示，可以从两方面理解，一方面对于端点拟合连线(endpoint-fit line)，与实际转移曲线在中间差值最大，另一方面对于SARADC电路而言，在code处于中位数时的翻转其电路电容变化最大（如下图二中$C+2C+4C+8C$变化到$16C$）所引入的误差也在这个翻转中最大，所以导致INL在中位数跳变。</p>
+<div class="img-center"><img src="../assets/pic/ADC/ADC1_13.png" style="zoom:100%;"  width="600" height="400" alt="ADC1_13"></div>
+<div class="img-center"><img src="../assets/pic/ADC/ADC1_14.png" style="zoom:60%;"  width="600" height="400" alt="ADC1_14"></div>
+<ul>
+<li>增益误差 gain error</li>
+</ul>
+<p>指传输特性直线斜率的误差，理想情况下该斜率为$D_{FS}/X_{FS}$,$D_{FS}$为满刻度数字码$X_{FS}$为满刻度模拟范围，由于$D_{FS}$本身代表$X_{FS}$的量化，故理想情况这个值为1</p>
+<div class="img-center"><img src="../assets/pic/ADC/adc1_3.png" style="zoom:60%;"  width="600" height="400" alt="adc1_3"></div>
+<ul>
+<li>失调 offset</li>
+</ul>
+<p>零输入情况下的输出漂移</p>
+<div class="img-center"><img src="../assets/pic/ADC/adc1_5.png" style="zoom:60%;"  width="600" height="400" alt="adc1_5"></div>
+<p>除此之外还有单调性，共模误差，满刻度失调，零刻度失调等等</p>
+<h2 id="_3">动态指标</h2>
+<ul>
+<li>等效输入噪声</li>
+</ul>
+<p>ADC电路产生的电子噪声的度量，如下图所示，可能会导致输入转换的不明确，但不一定是坏事，可以参考下面的论文：</p>
+<blockquote>
+<p>The Good, the Bad, and the Ugly Aspects of ADC   Input Noise—Is No Noise Good Noise? </p>
+</blockquote>
+<div class="img-center"><img src="../assets/pic/ADC/adc1_6.png" style="zoom:60%;"  width="600" height="400" alt="adc1_6"></div>
+<div class="img-center"><img src="../assets/pic/ADC/adc1_7.png" style="zoom:60%;"  width="600" height="400" alt="adc1_7"></div>
+<blockquote>
+<p>P-P input noise代表输入噪声在时域的最大最小值的差，RMS noise是通过对目标带宽内噪声功率谱密度积分后开根号得到$\sqrt{\int^{f_h}_{f_l}S_x(f)df}$，在统计学角度RMS噪声可以和峰峰值噪声相互转换，最常用转换是将RMS噪声*6.6，即在99.9%的概率下，噪声峰峰值不会超过RMS噪声的6.6倍，该转换前提是只考虑计算RMS噪声是对应积分频带内的噪声贡献，忽略了RMS噪声带宽以外的噪声</p>
+</blockquote>
+<ul>
+<li>信噪比 signal-to-noise ratio SNR</li>
+</ul>
+<p>是模数转换器的基频信号的能量与奈奎斯特频率以下除了直流和谐波以外所有频谱分量的总能量之和（即噪声功率）的比值，单位为dB。</p>
+<p>对于ADC，其SNR的理论最大值由下式决定
+$$
+SNR=6.02\times N+1.76dB
+$$
+这个上限是由于量化噪声导致的，如下图所示，量化噪声是ADC客观存在的白噪声，其代表了量化过程中模拟量和数字量的差值，</p>
+<div class="img-center"><img src="../assets/pic/ADC/adc1_8.png" style="zoom:60%;"  width="600" height="400" alt="adc1_8"></div>
+<p>量化噪声的能量功率为
+$$
+P_{noise}=\frac{1}{q}\int^{\frac{q}{2}}_{-\frac{q}{2}}x^2dx=\frac{LSB^2}{12}
+$$</p>
+<p>信号的能量功率为
+$$
+P_{signal}=\left(\frac{FS}{2\sqrt{2}}\right)^2=\left(\frac{2^N\cdot LSB}{2\sqrt{2}}\right)^2
+$$
+则信噪比为
+$$
+SNR=10log_{10}\frac{P_{signal}}{P_{noise}}=6.02\times N+1.76dB
+$$
+还有一种写法的SNR：
+$$
+SNR=6.02\times N+1.76dB+10log_{10}\frac{f_s}{2\cdot BW}
+$$
+这种写法后面的部分称为采样增益，是当奈奎斯特频率远大于输入信号带宽时，滤波导致的量化噪声高频信号去除得到的，详情见[ADC_采样]。</p>
+<div class="img-center"><img src="../assets/pic/ADC/ADC1_9.png" style="zoom:60%;"  width="600" height="400" alt="ADC1_9"></div>
+<p>高频时SNR会下降：</p>
+<p>1、采样带宽限制</p>
+<p>2、采样保持线性度下降</p>
+<p>3、Jitter $SNR_{degrade}=-20\cdot log(2\cdot f_{in}\cdot t_{jitter})$</p>
+<ul>
+<li>有效位数 Effective number of bit ENOB</li>
+</ul>
+<p>用信噪比来表示位数，即
+$$
+ENOB=\frac{SNR-1.76dB}{6.02}
+$$
+实际信噪比会低于$6.02\cdot N+1.76dB$，因为除了量化噪声还有电子元件本身的噪声。</p>
+<ul>
+<li>无杂散动态范围(Spur free dynamic range,SFDR)</li>
+</ul>
+<p>ADC基频信号功率与最大杂散信号功率的比值称为无杂散动态范围，单位为dB
+$$
+SFDR=10log\frac{P_{sig}}{P_{spur_max}}
+$$<div class="img-center"><img src="../assets/pic/ADC/ADC1_10.png" style="zoom:80%;"  width="600" height="400" alt="ADC1_10"></div></p>
+<ul>
+<li>总谐波失真(total harmonic distortion,THD)</li>
+</ul>
+<p>总谐波失真是ADC输出信号中包含的全波谐波分量与基频信号功率之比，单位为dB</p>
+<div class="img-center"><img src="../assets/pic/ADC/ADC1_11.png" style="zoom:80%;"  width="600" height="400" alt="ADC1_11"></div>
+<ul>
+<li>信噪失真比(Signal-to-Noise-and-Distortion Ratio,SNDR/SINDR/SINAD)</li>
+</ul>
+<p>指输入信号功率与奈奎斯特频率以下的噪声和谐波分量（不包括直流分量）的功率和之比，单位为dB。
+$$
+SNDR=10log\frac{P_{sig}}{P_{noise}+P_{spur}}
+$$
+其中$P_{noise}$代表SNR，即普通的噪声，$P_{spur}$代表THD，即谐波失真</p>
+<div class="img-center"><img src="../assets/pic/ADC/ADC1_12.png" style="zoom:80%;"  width="600" height="400" alt="ADC1_12"></div>
+<ul>
+<li>模拟输入带宽(Analog input Bandwidth)</li>
+</ul>
+<p>保持输入信号幅值不变，ADC的输出幅值随着输入信号频率上升而下降，模拟输入带宽指ADC输出幅值比低频输入下的满量程下降3dB的频率，单位为Hz</p>
+<ul>
+<li>有效分辨带宽(Effective Resolution Bandwidth)</li>
+</ul>
+<p>相对于低频输入时的信噪失真比(SNDR)，其信噪失真比下降3dB时对应的输入信号频率。类似于运放的增益频率响应。</p>
+<ul>
+<li>THD+N</li>
+</ul>
+<p>需要指定带宽，当带宽为$f_s/2$时，THD+N等价于SNDR</p>
+<ul>
+<li>综合品质因子(Figure of Merit)</li>
+</ul>
+<p>用于衡量不同精度、速度的ADC的能效水平的一个因子，单位为pJ/conv-step，针对不同要求有多种不同定义：
+$$
+FoM=\frac{P}{2^{ENOB}\cdot f_s} \\
+FoM=\frac{P}{2^{ENOB}\cdot ERBW}
+$$
+在仿真中不会把动态性能和静态性能同时测量，对于动态性能，往往不会占满量程，以防出现超量程的失真导致SNR下降，对于静态性能往往会满量程甚至超量程，否则非满量程会导致缺失部分code的DNL和INL</p>
+<p>下图展示的是非满量程的测试结果，动态性能正常，但对于静态性能的DNL和INL只有在41之后才有值（末端一样），缺失了部分code的数值</p>
+<div class="img-center"><img src="../assets/pic/ADC/ADC1_15.png" style="zoom:100%;"  width="600" height="400" alt="ADC1_15"></div>
+<p>下图展示满量程的测量结果，DNL和INL在每个code都有测量值，但SNR表现很差。</p>
+<div class="img-center"><img src="../assets/pic/ADC/ADC1_16.png" style="zoom:100%;"  width="600" height="400" alt="ADC1_16"></div>
+<div class="img-center"><img src="../assets/pic/ADC/ADC1_17.png" style="zoom:100%;"  width="600" height="400" alt="ADC1_17"></div>
+      <!-- 此處結束 -->
+            <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+            
+    </section>
+
+    <a href="./ADC-index.html" class="back-link">← 返回总目录</a>
+
+    <!-- 如果你已经做了“回到顶部按钮”，也可以一并贴在这里 -->
+     <!-- 回到顶部按钮 -->
+  <button class="back-to-top" id="backToTopBtn" aria-label="回到页面顶部">↑</button>
+
+  <script>
+    // 监听滚动，控制按钮显隐
+    window.addEventListener("scroll", function () {
+      var btn = document.getElementById("backToTopBtn");
+      if (!btn) return;
+      if (window.scrollY > 1400) {
+        btn.classList.add("show");
+      } else {
+        btn.classList.remove("show");
+      }
+    });
+
+    // 点击回到顶部
+    document.addEventListener("DOMContentLoaded", function () {
+      var btn = document.getElementById("backToTopBtn");
+      if (!btn) return;
+      btn.addEventListener("click", function () {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"  // 平滑滚动
+        });
+      });
+    });
+    
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$',  right: '$',  display: false},
+            {left: '\\(', right: '\\)', display: false},
+            {left: '\\[', right: '\\]', display: true}
+          ]
+        });"></script>
+
+  </main>
+</body>
+</html>
