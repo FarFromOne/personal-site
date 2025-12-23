@@ -56,49 +56,6 @@ def load_template() -> str:
     return TEMPLATE_FILE.read_text(encoding="utf-8")
 
 
-# def extract_title_and_strip_h1(md_text: str, fallback_name: str):
-#     """
-#     从 markdown 提取第一个一级标题作为文章标题，
-#     同时把这一行（以及紧跟的一行空白）从正文里删掉。
-#     返回：article_title, md_body
-#     """
-#     lines = md_text.splitlines()
-#     article_title = None
-#     new_lines = []
-#     skip_blank_after_h1 = False
-# 
-#     for line in lines:
-#         stripped = line.lstrip()
-# 
-#         # 1) 如果还没找到 H1，尝试匹配 "# 标题"
-#         if article_title is None:
-#             m = re.match(r"#\s+(.+)", stripped)
-#             if m:
-#                 article_title = m.group(1).strip()
-#                 # 不把这一行加入 new_lines，相当于删掉
-#                 skip_blank_after_h1 = True  # 标记：下一行如果是空行也顺便丢掉
-#                 continue
-# 
-#         # 2) H1 后紧跟的第一行空行也丢掉（为了页面上不多出一块空白）
-#         if skip_blank_after_h1:
-#             if line.strip() == "":
-#                 # 丢掉这行空白
-#                 skip_blank_after_h1 = False
-#                 continue
-#             else:
-#                 skip_blank_after_h1 = False
-# 
-#         # 3) 其它所有行正常保留
-#         new_lines.append(line)
-# 
-#     if article_title is None:
-#         article_title = fallback_name
-#         md_body = md_text
-#     else:
-#         md_body = "\n".join(new_lines).lstrip("\n")
-# 
-#     return article_title, md_body
-
 def extract_title_subtitle_and_body(md_text: str, fallback_name: str):
     """
     从 markdown 中提取：
